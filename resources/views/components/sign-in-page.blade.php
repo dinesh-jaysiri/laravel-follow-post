@@ -1,6 +1,33 @@
 <div class="d-flex flex-column">
     <div class="page page-center">
         <div class="container container-normal py-4">
+            {{-- alerts --}}
+
+            @if (session()->has('logoutsuccess'))
+                <div class="alert alert-important alert-success alert-dismissible" role="alert">
+                    <div class="d-flex">
+                        <div>
+                        </div>
+                        <div>
+                            {{ session('logoutsuccess') }}
+                        </div>
+                    </div>
+                    <a class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="close"></a>
+                </div>
+            @endif
+            @if (session()->has('loginfailed'))
+                <div class="alert alert-important alert-danger alert-dismissible" role="alert">
+                    <div class="d-flex">
+                        <div>
+                        </div>
+                        <div>
+                            {{ session('loginfailed') }}
+                        </div>
+                    </div>
+                    <a class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="close"></a>
+                </div>
+            @endif
+            
             <div class="row align-items-center g-4">
                 <div class="col-lg">
                     <div class="container-tight">

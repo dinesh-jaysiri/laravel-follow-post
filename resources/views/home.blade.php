@@ -10,6 +10,9 @@
 </head>
 
 <body data-bs-theme="dark">
+
+    
+
     @auth
         <x-home-page />
     @else

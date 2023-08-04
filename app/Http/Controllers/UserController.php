@@ -23,9 +23,10 @@ class UserController extends Controller
 
         $incomingField['password'] = bcrypt($incomingField['password']);
 
-        User::create($incomingField);
+        $user = User::create($incomingField);
+        auth()->login($user);
 
-        return redirect('/');
+        return redirect('/')->with('registersuccess', 'You have successfully registered and logged in.');
 
     }
 
@@ -46,6 +47,11 @@ class UserController extends Controller
 
         }
 
-        return redirect('/');
+        return redirect('/')->with('loginfailed', 'Invalid login.');
+    }
+
+    public function logout(){
+        auth()->logout();
+        return redirect('/')->with('logoutsuccess', 'You are successfully loged out.');
     }
 }

@@ -22,4 +22,5 @@ Route::get('/', function () {
 Route::post('/login',[UserController::class,'login']);
 Route::post('/register',[UserController::class, 'register' ]);
 Route::get('/register',[UserController::class, 'showRegisterPage']);
+Route::post('/logout',[UserController::class, 'logout']);
 
