@@ -1,25 +1,57 @@
-<html lang="en">
+<x-app-layout>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Card title</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-tabs">
+                <!-- Cards navigation -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation"><a href="#tab-top-1" class="nav-link active"
+                            data-bs-toggle="tab" aria-selected="true" role="tab">Posts(3)</a></li>
+                    <li class="nav-item" role="presentation"><a href="#tab-top-2" class="nav-link" data-bs-toggle="tab"
+                            aria-selected="false" tabindex="-1" role="tab">Followers</a></li>
+                    <li class="nav-item" role="presentation"><a href="#tab-top-3" class="nav-link" data-bs-toggle="tab"
+                            aria-selected="false" tabindex="-1" role="tab">Following</a></li>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href={{ 'https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css' }}>
+                </ul>
+                <div class="tab-content">
+                    <!-- Content of card #1 -->
+                    <div id="tab-top-1" class="card tab-pane active show" role="tabpanel">
+                        <div class="card-body">
+                            <div class="card-title">Content of tab #1</div>
+                            <p class="text-muted">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci,
+                                alias aliquid distinctio dolorem expedita, fugiat hic magni molestiae
+                                molestias odit.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Content of card #2 -->
+                    <div id="tab-top-2" class="card tab-pane" role="tabpanel">
+                        <div class="card-body">
+                            <div class="card-title">Content of tab #2</div>
+                            <p class="text-muted">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci,
+                                alias aliquid distinctio dolorem expedita, fugiat hic magni molestiae
+                                molestias odit.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Content of card #3 -->
+                    <div id="tab-top-3" class="card tab-pane" role="tabpanel">
+                        <div class="card-body">
+                            <div class="card-title">Content of tab #3</div>
+                            <p class="text-muted">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci,
+                                alias aliquid distinctio dolorem expedita, fugiat hic magni molestiae
+                                molestias odit.
+                            </p>
+                        </div>
+                    </div>
 
-    <title>OurApp</title>
-</head>
-
-<body data-bs-theme="dark">
-
-    
-
-    @auth
-        <x-home-page />
-    @else
-        <x-sign-in-page />
-    @endauth
-
-    <script src={{ 'https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js' }}></script>
-</body>
-
-</html>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

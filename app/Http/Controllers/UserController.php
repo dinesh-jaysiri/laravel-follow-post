@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -9,7 +10,10 @@ use Illuminate\Validation\Rule;
 class UserController extends Controller
 {
 
-    public function showRegisterPage(){
+    
+
+    public function showRegisterPage()
+    {
         return view("sign-up");
     }
     public function register(Request $request)
@@ -26,7 +30,7 @@ class UserController extends Controller
         $user = User::create($incomingField);
         auth()->login($user);
 
-        return redirect('/')->with('registersuccess', 'You have successfully registered and logged in.');
+        return redirect('/')->with('success', 'You have successfully registered and logged in.');
 
     }
 
@@ -47,11 +51,12 @@ class UserController extends Controller
 
         }
 
-        return redirect('/')->with('loginfailed', 'Invalid login.');
+        return redirect('/')->with('failure', 'Invalid login.');
     }
 
-    public function logout(){
+    public function logout()
+    {
         auth()->logout();
-        return redirect('/')->with('logoutsuccess', 'You are successfully loged out.');
+        return redirect('/')->with('success', 'You are successfully loged out.');
     }
 }

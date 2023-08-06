@@ -3,25 +3,25 @@
         <div class="container container-normal py-4">
             {{-- alerts --}}
 
-            @if (session()->has('logoutsuccess'))
+            @if (session()->has('success'))
                 <div class="alert alert-important alert-success alert-dismissible" role="alert">
                     <div class="d-flex">
                         <div>
                         </div>
                         <div>
-                            {{ session('logoutsuccess') }}
+                            {{ session('success') }}
                         </div>
                     </div>
                     <a class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="close"></a>
                 </div>
             @endif
-            @if (session()->has('loginfailed'))
+            @if (session()->has('failure'))
                 <div class="alert alert-important alert-danger alert-dismissible" role="alert">
                     <div class="d-flex">
                         <div>
                         </div>
                         <div>
-                            {{ session('loginfailed') }}
+                            {{ session('failure') }}
                         </div>
                     </div>
                     <a class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="close"></a>

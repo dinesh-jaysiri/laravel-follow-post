@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href={{ 'https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css' }}>
-    <title>Document</title>
+
+    <title>OurApp</title>
 </head>
 
-<body class=" d-flex flex-column" data-bs-theme="dark">
-    
-    <script src={{ 'https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js' }}></script>
+<body data-bs-theme="dark">
 
+    
+
+    @auth
+        {{$slot}}
+    @else
+        <x-sign-in-page />
+    @endauth
+
+    <script src={{ 'https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js' }}></script>
 </body>
 
 </html>
