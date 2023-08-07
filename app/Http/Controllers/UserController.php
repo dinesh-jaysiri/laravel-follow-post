@@ -9,9 +9,10 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-
-    
-
+    public function profile(User $user)
+    {
+        return view('profile-post', ['user' => $user, 'posts' => $user->posts()->latest()->get(),'postCount'=>$user->posts()->count()]);
+    }
     public function showRegisterPage()
     {
         return view("sign-up");
@@ -52,6 +53,11 @@ class UserController extends Controller
         }
 
         return redirect('/')->with('failure', 'Invalid login.');
+    }
+
+    public function showLoginPage(){
+
+        return view('sign-in');
     }
 
     public function logout()

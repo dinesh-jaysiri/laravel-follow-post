@@ -62,15 +62,18 @@
                     </div>
 
                     {{-- avatar --}}
-                    <div class="nav-item dropdown">
+                    @auth
+                        <div class="nav-item dropdown">
 
 
-                        <a href="#" class="nav-link d-flex lh-1 text-reset p-0">
-                            <span class="avatar avatar-sm"
-                                style="background-image: url(https://tabler.io/demo/static/avatars/000m.jpg)"></span>
+                            <a href="/profile/{{ auth()->user()->username }}" class="nav-link d-flex lh-1 text-reset p-0">
+                                <span class="avatar avatar-sm"
+                                    style="background-image: url(https://tabler.io/demo/static/avatars/000m.jpg)"></span>
 
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+
+                    @endauth
 
 
                 </div>
@@ -174,13 +177,13 @@
 
             <div class="page-body">
                 <div class="container-xl">
-                   {{$slot}}
+                    {{ $slot }}
                 </div>
 
             </div>
         </div>
 
-        
+
 
     </div>
 

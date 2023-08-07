@@ -7,6 +7,18 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    public function deletePost(Request $request, Post $post)
+    {
+
+        // if ($request->user()->cannot('update', $post)) {
+        //     abort(403);
+        // }
+        $post->delete();
+
+        return redirect('/profile/' . auth()->user()->username)->with('success', 'Successfully Deleted Post.');
+
+    }
     public function showSinglePost(Post $post)
     {
         return view('single-post', ['post' => $post]);
@@ -29,7 +41,8 @@ class PostController extends Controller
 
     }
 
-    public function showCreatePostPage(){
+    public function showCreatePostPage()
+    {
         return view('create-post');
     }
 }

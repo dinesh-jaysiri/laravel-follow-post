@@ -11,13 +11,11 @@
 
 <body data-bs-theme="dark">
 
-    
 
-    @auth
-        {{$slot}}
-    @else
-        <x-sign-in-page />
-    @endauth
+
+
+    {{ $slot }}
+
 
     <script src={{ 'https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js' }}></script>
 </body>
