@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [UserController::class, 'profile'])->middleware('mustBeLoggedIn');
+Route::get('/', [UserController::class, 'showHomePage'])->middleware('mustBeLoggedIn');
 
 // user routes 
 Route::post('/login', [UserController::class, 'login'])->middleware('guest');
