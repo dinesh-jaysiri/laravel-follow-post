@@ -25,6 +25,8 @@ Route::get('/register', [UserController::class, 'showRegisterPage'])->middleware
 );
 Route::get('/login', [UserController::class, 'showLoginPage'])->middleware('guest');
 Route::post('/logout', [UserController::class, 'logout'])->middleware('mustBeLoggedIn');
+Route::get('/manage-avatar',[UserController::class, 'showAvatarUplod']);
+Route::post('/manage-avatar',[UserController::class, 'storeAvatar']);
 
 // post routers 
 Route::get('/create-post', [PostController::class, 'showCreatePostPage'])->middleware('mustBeLoggedIn');
