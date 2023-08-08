@@ -45,4 +45,24 @@ class PostController extends Controller
     {
         return view('create-post');
     }
+
+    public function showEditPostPage(Post $post)
+    {
+        return view('edit-post', ['post' => $post]);
+    }
+
+    public function updatePost(Post $post, Request $request){
+        $incomingField = $request->validate([
+            'body' => 'required',
+            'title' => 'required',
+        ]);
+
+        $incomingField['body'] = strip_tags($incomingField['body']);
+        $incomingField['title'] = strip_tags($incomingField['title']);
+       
+
+        $post->update($incomingField);
+
+        return redirect("/post/{$post->id}")->with('success', 'Successfully Update post.');
+    }
 }

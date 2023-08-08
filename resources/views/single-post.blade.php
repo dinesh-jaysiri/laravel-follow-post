@@ -10,10 +10,8 @@
                 </li>
                 @can('update', $post)
                     <li class="nav-item ms-auto">
-                        <form action="post/{{$post->id}}">
-                            @csrf
-                            @method('PUT')
-                        <button class="nav-link " type="submit">
+
+                        <a class="nav-link " href="/edit-post/{{$post->id}}" type="submit">
                             <!-- Download SVG icon from http://tabler-icons.io/i/settings -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="24"
                                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -22,8 +20,8 @@
                                 <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4"></path>
                                 <path d="M13.5 6.5l4 4"></path>
                             </svg>
-                        </button>
-                        </form>
+                        </a>
+
                     </li>
                 @endcan
                 @can('delete', $post)

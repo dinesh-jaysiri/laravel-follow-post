@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function profile(User $user)
     {
-        return view('profile-post', ['user' => $user, 'posts' => $user->posts()->latest()->get(),'postCount'=>$user->posts()->count()]);
+        return view('profile-posts', ['user' => $user, 'posts' => $user->posts()->latest()->get(),'postCount'=>$user->posts()->count()]);
     }
     public function showRegisterPage()
     {
