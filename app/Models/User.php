@@ -54,7 +54,7 @@ class User extends Authenticatable
     public function avatar():Attribute{
 
         return Attribute::make(get:function($value){
-            return $value?'/storage/aavatars/' . $value : '/img/user.png';
+            return $value? '/storage/avatars/' . $value : '/img/user.png';
         });
 
     }
