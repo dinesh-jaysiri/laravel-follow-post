@@ -3,13 +3,15 @@
         <div class="card-header">
             <div class="avatar-list">
                 <span class="avatar avatar-xs rounded"
-                    style="background-image: url({{auth()->user()->avatar}})"></span>
+                    style="background-image: url({{$user->avatar}})"></span>
                 {{ $user->username }}
 
 
             </div>
 
-            <a href="#" class="btn ms-2 btn-facebook">
+            <form action="/create-follower/{{$user->username}}" style="margin-bottom: 0;" method="POST" >
+                @csrf
+            <button class="btn ms-2 btn-facebook">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="24"
                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -20,7 +22,8 @@
                     <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
                 </svg>
                 Fallow
-            </a>
+            </button>
+            </form>
 
             @if (auth()->user()->username == $user->username)
               <a href="/manage-avatar" class="btn ms-2 ">
@@ -64,7 +67,7 @@
                                                 <div class="col-auto">
                                                     <a href="#">
                                                         <span class="avatar"
-                                                            style="background-image: url({{auth()->user()->avatar}})"></span>
+                                                            style="background-image: url({{$user->avatar}})"></span>
                                                     </a>
                                                 </div>
                                                 <div class="col text-truncate">

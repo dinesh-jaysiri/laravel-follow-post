@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -25,8 +26,14 @@ Route::get('/register', [UserController::class, 'showRegisterPage'])->middleware
 );
 Route::get('/login', [UserController::class, 'showLoginPage'])->middleware('guest');
 Route::post('/logout', [UserController::class, 'logout'])->middleware('mustBeLoggedIn');
-Route::get('/manage-avatar',[UserController::class, 'showAvatarUplod']);
-Route::post('/manage-avatar',[UserController::class, 'storeAvatar']);
+Route::get('/manage-avatar',[UserController::class, 'showAvatarUplod'])->middleware('mustBeLoggedIn');
+Route::post('/manage-avatar',[UserController::class, 'storeAvatar'])->middleware('mustBeLoggedIn');
+
+
+// follower routes 
+Route::post('/create-follower/{user:username}',[FollowController::class, 'createFollower'])->middleware('mustBeLoggedIn');
+Route::post('/remove-follower/{user:username}', [FollowController::class, 'removeFollower'])->middleware('mustBeLoggedIn');
+
 
 // post routers 
 Route::get('/create-post', [PostController::class, 'showCreatePostPage'])->middleware('mustBeLoggedIn');

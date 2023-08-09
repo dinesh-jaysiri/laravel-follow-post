@@ -23,9 +23,14 @@ class UserController extends Controller
         $imgData = Image::make($request->file('avatar'))->fit(120)->encode('jpg');
        
         Storage::put('public/avatars/'. $fileName,$imgData);
+        $oldAvatar = $user->avatar;
         $user->avatar = $fileName;
         $user->save();
-        return redirect('/profile/'. $user->username);
+
+        if($oldAvatar != '/img/user.png'){
+            Storage::delete(str_replace('/storage/', 'public/', $oldAvatar));
+        }
+        return redirect('/profile/'. $user->username)->with('success', "Successfully uploaded new avatar.");
     }
 
     public function showAvatarUplod()
