@@ -69,7 +69,7 @@
 
                             <a href="/profile/{{ auth()->user()->username }}" class="nav-link d-flex lh-1 text-reset p-0">
                                 <span class="avatar avatar-sm"
-                                    style="background-image: url(/storage/avatars/{{ auth()->user()->avatar }})"></span>
+                                    style="background-image: url({{auth()->user()->avatar}})"></span>
 
                             </a>
                         </div>

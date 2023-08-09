@@ -5,8 +5,7 @@
         <div class="mb-3">
             <label class="form-label">Avatar</label>
 
-            <input type="file" name="avatar" class="form-control @error('avatar') is-invalid @enderror "
-                placeholder="Password" autocomplete="off">
+            <input type="file" name="avatar" class="form-control @error('avatar') is-invalid @enderror">
             <div class="invalid-feedback">
                 @error('avatar')
                     {{ $message }}

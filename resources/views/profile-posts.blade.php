@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="avatar-list">
                 <span class="avatar avatar-xs rounded"
-                    style="background-image: url(https://preview.tabler.io/static/avatars/000m.jpg)"></span>
+                    style="background-image: url({{auth()->user()->avatar}})"></span>
                 {{ $user->username }}
 
 
@@ -64,7 +64,7 @@
                                                 <div class="col-auto">
                                                     <a href="#">
                                                         <span class="avatar"
-                                                            style="background-image: url(https://preview.tabler.io/static/avatars/000m.jpg)"></span>
+                                                            style="background-image: url({{auth()->user()->avatar}})"></span>
                                                     </a>
                                                 </div>
                                                 <div class="col text-truncate">
