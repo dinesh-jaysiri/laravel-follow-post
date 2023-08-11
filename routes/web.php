@@ -45,3 +45,5 @@ Route::put('/edit-post/{post}', [PostController::class, 'updatePost'])->middlewa
 
 // profile routes
 Route::get('/profile/{user:username}', [UserController::class, 'profile'])->middleware('mustBeLoggedIn');
+Route::get('/profile/{user:username}/following',[UserController::class, 'following'])->middleware('mustBeLoggedIn');
+Route::get('/profile/{user:username}/followers', [UserController::class, 'followers'])->middleware('mustBeLoggedIn');

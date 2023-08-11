@@ -135,6 +135,19 @@
                             <a class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="close"></a>
                         </div>
                     @endif
+
+                    @if (session()->has('failure'))
+                        <div class="alert alert-important alert-danger alert-dismissible" role="alert">
+                            <div class="d-flex">
+                                <div>
+                                </div>
+                                <div>
+                                    {{ session('failure') }}
+                                </div>
+                            </div>
+                            <a class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="close"></a>
+                        </div>
+                    @endif
                     <div class="row g-2 align-items-center">
                         <div class="col">
                             <!-- Page pre-title -->
