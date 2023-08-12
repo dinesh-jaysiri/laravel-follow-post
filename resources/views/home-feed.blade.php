@@ -8,19 +8,19 @@
                     <div class="list-group-item">
                         <div class="row align-items-center">
                             <div class="col-auto">
-                                <a href="#">
+                                <div>
                                     <span class="avatar"
                                         style="background-image: url({{ $post->user->avatar }})"></span>
-                                </a>
+                                </div>
                             </div>
                             <div class="col text-truncate">
-                                <a href="#" class="text-reset d-block">{{ $post->title }}</a>
+                                <a href="/post/{{$post->id}}" class="text-reset d-block">{{ $post->title }}</a>
                                 <div class="d-block text-secondary text-truncate mt-n1">
                                     {{ $post->body }}</div>
                             </div>
 
                             <div class="col-auto">
-                                <a href="#" class="link-warning">
+                                <div  class="link-warning">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -37,13 +37,16 @@
                                         <path d="M12 15v3"></path>
                                     </svg>
                                     {{ $post->created_at->format('d M Y') }}
-                                </a>
+                                </div>
                             </div>
 
                         </div>
                     </div>
                 @endforeach
 
+                <div class="mt-3" >
+                    {{$feedPosts->links()}}
+                </div>
             </div>
         </div>
     </div>
