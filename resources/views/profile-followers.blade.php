@@ -21,11 +21,11 @@
 
                                  @foreach ($followers as $follow)
                                     {{-- user --}}
-                                    <a href="/profile/jayasiri" class="row mb-3 ">
+                                    <a href="/profile/{{ $follow->userDoingTheFollowing->username }}" class="row mb-3 ">
                                         <div class="col-auto">
                                             <div>
                                                 <span class="avatar"
-                                                    style="background-image: url({{ $follow->userBeingFollowed->avatar }})"></span>
+                                                    style="background-image: url({{ $follow->userDoingTheFollowing->avatar }})"></span>
                                             </div>
                                         </div>
                                         <div class="col text-truncate">

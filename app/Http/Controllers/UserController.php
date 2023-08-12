@@ -20,7 +20,7 @@ class UserController extends Controller
         ]);
 
 
-        $user = User::where(['id','=',auth()->user()->id]);
+        $user = User::find(auth()->user()->id);
         $fileName = $user->id . '-' . uniqid() . '.jpg';
         $imgData = Image::make($request->file('avatar'))->fit(120)->encode('jpg');
 
@@ -42,16 +42,18 @@ class UserController extends Controller
 
     public function showHomePage()
     {
-        return redirect('/profile/' . auth()->user()->username);
+        $user = User::find(auth()->user()->id);
+        return view('home-feed',["feedPosts"=> $user->feedPosts()->latest()->get()]);
     }
 
-    private function getSheardData($user){
+    private function getSheardData($user)
+    {
         $isFollowing = 0;
         if (auth()->check()) {
             $isFollowing = Follow::where([['user_id', '=', auth()->user()->id], ['followeduser', '=', $user->id]])->count();
 
         }
-        View::share('sharedData', ['user' => $user,  'postCount' => $user->posts()->count(), 'isFollowing' => $isFollowing,'followingCount' => $user->following()->count(), 'followersCount' =>$user->followers()->count()]);
+        View::share('sharedData', ['user' => $user, 'postCount' => $user->posts()->count(), 'isFollowing' => $isFollowing, 'followingCount' => $user->following()->count(), 'followersCount' => $user->followers()->count()]);
 
     }
 
