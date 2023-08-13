@@ -6,7 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href={{ 'https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css' }}>
 
-    <title>OurApp</title>
+    <title>
+        @isset($docTitle)
+            {{$docTitle}} | OurApp
+        @else
+        OurApp
+        @endisset</title>
 </head>
 
 <body data-bs-theme="dark">
