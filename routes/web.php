@@ -42,7 +42,8 @@ Route::get('/post/{post}', [PostController::class, 'showSinglePost']);
 Route::delete('/post/{post}', [PostController::class, 'deletePost'])->middleware('can:delete,post');
 Route::get('/edit-post/{post}', [PostController::class, 'showEditPostPage'])->middleware('can:update,post');
 Route::put('/edit-post/{post}', [PostController::class, 'updatePost'])->middleware('can:update,post');
-Route::get('/search/{term}',[PostController::class, 'search']);
+Route::post('/search',[PostController::class, 'search'])->middleware('mustBeLoggedIn');
+Route::get('/search',[PostController::class,'getSearch'])->middleware('mustBeLoggedIn');
 
 // profile routes
 Route::get('/profile/{user:username}', [UserController::class, 'profile'])->middleware('mustBeLoggedIn');

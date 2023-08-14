@@ -22,7 +22,9 @@
     {{ $slot }}
 
 
-    <script src={{ 'https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js' }}></script>
+<script src={{ 'https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js' }}></script>
+@vite(['resources/js/app.js'])
+@vite(['resources/css/app.css'])
 </body>
 
 </html>

@@ -3,15 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
 
-    public function search($term){
-        $posts = Post::search($term)->get();
-        $posts->load('user:id','username', 'avatar');
-        return $posts;
+    public function search(Request $request)
+    {
+        $incomingField = $request->validate([
+            'search' => ['max:300']
+        ]);
+
+        $posts=[];
+
+        if($incomingField['search']){
+            $posts = Post::search($incomingField['search'])->paginate(2);
+        }else{
+             $user = User::find(auth()->user()->id);
+             $posts = $user->feedPosts()->latest()->paginate(2);
+        }
+
+        return view('home-feed', ["feedPosts" => $posts, 'search' => $incomingField['search']]);
+    }
+
+    public function getSearch(Request $request){
+
+        $posts = Post::search($request->query('query'))->paginate(2);
+        return view('home-feed', ["feedPosts" => $posts, 'search' => $request->query('query')]);
     }
 
     public function deletePost(Request $request, Post $post)
@@ -57,7 +76,8 @@ class PostController extends Controller
         return view('edit-post', ['post' => $post]);
     }
 
-    public function updatePost(Post $post, Request $request){
+    public function updatePost(Post $post, Request $request)
+    {
         $incomingField = $request->validate([
             'body' => 'required',
             'title' => 'required',
@@ -65,7 +85,7 @@ class PostController extends Controller
 
         $incomingField['body'] = strip_tags($incomingField['body']);
         $incomingField['title'] = strip_tags($incomingField['title']);
-       
+
 
         $post->update($incomingField);
 

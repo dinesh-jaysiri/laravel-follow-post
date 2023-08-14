@@ -1,4 +1,4 @@
-<x-layout >
+<x-layout>
 
     <div class="page">
         <header class="navbar navbar-expand-md d-print-none">
@@ -91,8 +91,9 @@
                     <div class="container-xl">
                         <div></div>
                         <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
-                            <form action="./" method="get" autocomplete="off" novalidate=""
+                            <form action="/search" method="POST" autocomplete="off" novalidate=""
                                 style="margin-block-end:0;">
+                                @csrf
                                 <div class="input-icon">
                                     <span class="input-icon-addon">
                                         <!-- Download SVG icon from http://tabler-icons.io/i/search -->
@@ -104,8 +105,9 @@
                                             <path d="M21 21l-6 -6"></path>
                                         </svg>
                                     </span>
-                                    <input type="text" value="" class="form-control" placeholder="Search…"
-                                        aria-label="Search in website">
+                                    <input  name="search" id="search"
+                                        type="text" class="form-control" placeholder="Search…" />
+
                                 </div>
                             </form>
                         </div>
@@ -195,7 +197,7 @@
             {{-- page body  --}}
 
             <div class="page-body">
-                <div class="container-xl">
+                <div id="resultContiner" class="container-xl">
                     {{ $slot }}
                 </div>
 

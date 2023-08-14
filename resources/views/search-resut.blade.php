@@ -1,4 +1,4 @@
-<x-app-layout :search="$search" >
+<x-app-layout>
     <div class="card-body">
         <div class="card-title">Latest Posts</div>
         <div class="list-group list-group-flush list-group-hoverable overflow-auto " style="max-height: 35rem;">

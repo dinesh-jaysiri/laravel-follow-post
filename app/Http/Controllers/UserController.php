@@ -43,7 +43,7 @@ class UserController extends Controller
     public function showHomePage()
     {
         $user = User::find(auth()->user()->id);
-        return view('home-feed',["feedPosts"=> $user->feedPosts()->latest()->paginate(4)]);
+        return view('home-feed',["feedPosts"=> $user->feedPosts()->latest()->paginate(4),'search'=>null]);
     }
 
     private function getSheardData($user)
